@@ -23,9 +23,11 @@ app.set('view engine', 'handlebars');
 var routes = require('./controllers/burgers_controller.js');
 app.use('/', routes);
 
+app.listen(process.env.PORT || 8080);
+
 //Commented out because Heroku provides its own port number
 /*
-var port = 8080;
+//var port = 8080;
 app.listen(port, function () {
 	console.log('Listening on PORT ' + port);
 });
