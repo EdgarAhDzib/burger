@@ -1,27 +1,13 @@
 var mysql = require('mysql');
 var connection;
+var keys = require('./keys.js');
 
-connection = mysql.createConnection({
-	port: '3306',
-	host: 'ehc1u4pmphj917qf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-	user: 'pz2gwy79xd0ibuz5',
-	password: 'a9oiop585yh5tzav',
-	database: 'o75ge8yq4ijl75cu'
-});
+console.log(keys);
 
-/*
-if (process.env.JAWSDB_URL) {
-	connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-	connection = mysql.createConnection({
-		host: 'localhost',
-		user: 'root',
-		password: 'El3ctro-K@tie',
-		database: 'burgers_db'
-	})
-}
-*/
+//This version of the method works on Heroku
+connection = mysql.createConnection(keys);
 
+//To compare the jawsDB (for Heroku) and localhost connection properties:
 /*
 var source = {
 	localhost: {
@@ -31,13 +17,7 @@ var source = {
 		password: '',
 		database: 'burgers_db'
 	},
-	jawsDB: {
-		port: 3306,
-		host: 'ehc1u4pmphj917qf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-		user: 'pz2gwy79xd0ibuz5',
-		password: 'a9oiop585yh5tzav',
-		database: 'o75ge8yq4ijl75cu'
-	}
+	jawsDB: keys
 }
 
 var connection = mysql.createConnection(source.jawsDB);
