@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }));
 
-// override with POST having ?_method=DELETE
+// override with POST having ?_method=PUT
 app.use(methodOverride('_method'));
 var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({
@@ -19,6 +19,7 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
+//Import the routes defined in the controller
 var routes = require('./controllers/burgers_controller.js');
 app.use('/', routes);
 
